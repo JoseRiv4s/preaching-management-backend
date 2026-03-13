@@ -1,77 +1,104 @@
 # Preaching Management Backend
 
-Backend del **Sistema de Gestión de Predicación**.
+Backend del sistema **Preaching Management**, una aplicación diseñada para gestionar jornadas de predicación y el control de territorios.
 
-Este servicio expone una API REST que permite gestionar las jornadas de predicación, los capitanes, los publicadores y las manzanas del territorio.
+El sistema permite registrar:
 
-El backend se conecta a la base de datos **preaching_management_db**, donde se almacenan todas las jornadas, participantes y manzanas predicadas.
+* Capitanes de grupo
+* Publicadores que participan en la predicación
+* Manzanas del territorio
+* Jornadas de predicación
+* Qué manzanas fueron predicadas
+* Qué publicadores participaron
+
+El objetivo es saber **qué territorios ya fueron predicados y cuáles faltan**, además de generar reportes de participación.
 
 ---
 
-# Tecnologías Utilizadas
+# Tecnologías
 
-* Java
+* Java 21
 * Spring Boot
 * PostgreSQL
 * Maven
 
 ---
 
-# Estructura del Proyecto
+# Arquitectura
+
+El proyecto sigue una **Clean Architecture pragmática inspirada en Hexagonal Architecture**, separando claramente las responsabilidades del sistema.
 
 ```
 src/main/java/com/preaching/management
 │
-├── application      # Casos de uso / lógica de negocio
-├── domain           # Entidades del dominio
-├── infrastructure   # Acceso a base de datos y servicios externos
-└── interfaces       # Controladores y capa API
+├── domain
+│   ├── model
+│   ├── repository
+│   └── exception
+│
+├── application
+│   └── service
+│
+├── infrastructure
+│   ├── config
+│   └── persistence
+│       ├── entity
+│       ├── mapper
+│       ├── repository
+│       └── adapter
+│
+├── interfaces
+│   └── rest
+│       ├── controller
+│       ├── dto
+│       │   ├── request
+│       │   └── response
+│       └── mapper
+│
+└── shared
+    ├── exception
+    └── util
 ```
 
 ---
 
-# Base de Datos
+# Capas del sistema
 
-Este backend utiliza la base de datos definida en el repositorio:
+## Domain
 
-preaching-management-database
+Contiene las entidades del negocio y las interfaces de repositorio.
+No depende de frameworks ni de infraestructura.
 
-La base de datos contiene las siguientes entidades principales:
+## Application
 
-* captains
-* publishers
-* blocks
-* preaching_days
-* preaching_participants
-* preached_blocks
+Contiene los **casos de uso** y la lógica de negocio de la aplicación.
 
----
+## Infrastructure
 
-# Ejecución del Proyecto
+Implementaciones técnicas como:
 
-1. Clonar el repositorio
+* acceso a base de datos
+* configuración
+* adaptadores
 
-2. Configurar la conexión a la base de datos en:
+## Interfaces
 
-```
-src/main/resources/application.yml
-```
-
-3. Ejecutar la aplicación:
-
-```
-mvn spring-boot:run
-```
+Contiene los controladores REST y los DTOs utilizados por la API.
 
 ---
 
-# Objetivo del Sistema
+# Base de datos
 
-Este backend permite:
+El sistema utiliza **PostgreSQL** para almacenar la información de:
 
-* Gestionar capitanes de predicación
-* Gestionar publicadores
-* Registrar jornadas de predicación
-* Registrar participantes en cada jornada
-* Registrar las manzanas predicadas
-* Consultar historial de predicación
+* Capitanes
+* Publicadores
+* Manzanas del territorio
+* Jornadas de predicación
+* Participantes de cada jornada
+
+---
+
+# Estado del proyecto
+
+🚧 En desarrollo
