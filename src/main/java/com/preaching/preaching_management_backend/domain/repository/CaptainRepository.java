@@ -10,4 +10,5 @@ public interface CaptainRepository {
     Captain save (Captain captain);
     Optional<Captain> findById(UUID id);
     List<Captain> findAll();
+    void deleteById(UUID id);
 }

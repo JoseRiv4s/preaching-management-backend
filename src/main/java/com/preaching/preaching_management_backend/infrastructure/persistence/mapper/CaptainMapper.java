@@ -2,12 +2,12 @@ package com.preaching.preaching_management_backend.infrastructure.persistence.ma
 
 import com.preaching.preaching_management_backend.domain.model.Captain;
 import com.preaching.preaching_management_backend.infrastructure.persistence.entity.CaptainEntity;
+import org.springframework.stereotype.Component;
 
+@Component
 public class CaptainMapper {
 
-    private CaptainMapper() {}
-
-    public static CaptainEntity toEntity(Captain captain) {
+    public CaptainEntity toEntity(Captain captain) {
         return CaptainEntity.builder()
                 .id(captain.getId())
                 .name(captain.getName())
@@ -16,7 +16,7 @@ public class CaptainMapper {
                 .build();
     }
 
-    public static Captain toDomain(CaptainEntity entity) {
+    public Captain toDomain(CaptainEntity entity) {
         return Captain.builder()
                 .id(entity.getId())
                 .name(entity.getName())
