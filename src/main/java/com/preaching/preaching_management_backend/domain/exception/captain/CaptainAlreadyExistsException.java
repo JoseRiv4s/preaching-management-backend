@@ -1,4 +1,4 @@
-package com.preaching.preaching_management_backend.domain.exception;
+package com.preaching.preaching_management_backend.domain.exception.captain;
 
 public class CaptainAlreadyExistsException extends RuntimeException {
 

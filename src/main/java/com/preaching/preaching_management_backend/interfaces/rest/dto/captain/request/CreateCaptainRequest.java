@@ -1,4 +1,4 @@
-package com.preaching.preaching_management_backend.interfaces.rest.dto.request;
+package com.preaching.preaching_management_backend.interfaces.rest.dto.captain.request;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;

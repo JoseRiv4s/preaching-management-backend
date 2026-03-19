@@ -2,9 +2,9 @@ package com.preaching.preaching_management_backend.interfaces.rest.controller;
 
 import com.preaching.preaching_management_backend.application.service.CaptainService;
 import com.preaching.preaching_management_backend.domain.model.Captain;
-import com.preaching.preaching_management_backend.interfaces.rest.dto.request.CreateCaptainRequest;
-import com.preaching.preaching_management_backend.interfaces.rest.dto.request.UpdateCaptainRequest;
-import com.preaching.preaching_management_backend.interfaces.rest.dto.response.CaptainResponse;
+import com.preaching.preaching_management_backend.interfaces.rest.dto.captain.request.CreateCaptainRequest;
+import com.preaching.preaching_management_backend.interfaces.rest.dto.captain.request.UpdateCaptainRequest;
+import com.preaching.preaching_management_backend.interfaces.rest.dto.captain.response.CaptainResponse;
 import com.preaching.preaching_management_backend.interfaces.rest.mapper.CaptainRestMapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
