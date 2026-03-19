@@ -1,4 +1,4 @@
-package com.preaching.preaching_management_backend.interfaces.rest.dto.response;
+package com.preaching.preaching_management_backend.interfaces.rest.dto.captain.response;
 
 import lombok.Builder;
 import lombok.Data;

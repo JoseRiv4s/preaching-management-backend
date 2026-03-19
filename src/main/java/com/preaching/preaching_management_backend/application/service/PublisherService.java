@@ -45,7 +45,7 @@ public class PublisherService {
         return publisherRepository.save(updated);
     }
 
-    public List<Publisher> getAllCaptains() {
+    public List<Publisher> getAllPublishers() {
         return publisherRepository.findAll();
     }
 

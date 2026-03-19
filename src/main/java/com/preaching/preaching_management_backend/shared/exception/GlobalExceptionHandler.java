@@ -3,6 +3,9 @@ package com.preaching.preaching_management_backend.shared.exception;
 import com.preaching.preaching_management_backend.domain.exception.captain.CaptainAlreadyExistsException;
 import com.preaching.preaching_management_backend.domain.exception.captain.CaptainInvalidDataException;
 import com.preaching.preaching_management_backend.domain.exception.captain.CaptainNotFoundException;
+import com.preaching.preaching_management_backend.domain.exception.publisher.PublisherAlreadyExistsException;
+import com.preaching.preaching_management_backend.domain.exception.publisher.PublisherInvalidDataException;
+import com.preaching.preaching_management_backend.domain.exception.publisher.PublisherNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
@@ -32,6 +35,24 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(CaptainAlreadyExistsException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ErrorResponse handleAlreadyExists(CaptainAlreadyExistsException ex) {
+        return buildResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(PublisherNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ErrorResponse handlePublisherNotFound(PublisherNotFoundException ex) {
+        return buildResponse(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(PublisherInvalidDataException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorResponse handlePublisherInvalidData(PublisherInvalidDataException ex) {
+        return buildResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(PublisherAlreadyExistsException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorResponse handlePublisherAlreadyExists(PublisherAlreadyExistsException ex) {
         return buildResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
