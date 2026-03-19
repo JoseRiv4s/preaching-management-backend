@@ -1,6 +1,8 @@
 package com.preaching.preaching_management_backend.shared.exception;
 
-import com.preaching.preaching_management_backend.domain.exception.*;
+import com.preaching.preaching_management_backend.domain.exception.captain.CaptainAlreadyExistsException;
+import com.preaching.preaching_management_backend.domain.exception.captain.CaptainInvalidDataException;
+import com.preaching.preaching_management_backend.domain.exception.captain.CaptainNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;

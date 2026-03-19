@@ -1,7 +1,7 @@
 package com.preaching.preaching_management_backend.application.service;
 
-import com.preaching.preaching_management_backend.domain.exception.CaptainInvalidDataException;
-import com.preaching.preaching_management_backend.domain.exception.CaptainNotFoundException;
+import com.preaching.preaching_management_backend.domain.exception.captain.CaptainInvalidDataException;
+import com.preaching.preaching_management_backend.domain.exception.captain.CaptainNotFoundException;
 import com.preaching.preaching_management_backend.domain.model.Captain;
 import com.preaching.preaching_management_backend.domain.repository.CaptainRepository;
 import lombok.RequiredArgsConstructor;
