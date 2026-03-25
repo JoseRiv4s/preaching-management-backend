@@ -14,6 +14,7 @@ public class BlockRestMapper {
     public Block toDomain(CreateBlockRequest request) {
         return Block.builder()
                 .blockNumber(request.getBlockNumber())
+                .status(request.getStatus())
                 .notes(request.getNotes())
                 .build();
     }

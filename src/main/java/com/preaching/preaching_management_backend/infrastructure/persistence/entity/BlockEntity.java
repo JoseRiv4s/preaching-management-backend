@@ -3,6 +3,8 @@ package com.preaching.preaching_management_backend.infrastructure.persistence.en
 import com.preaching.preaching_management_backend.domain.model.BlockStatus;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.JdbcType;
+import org.hibernate.dialect.type.PostgreSQLEnumJdbcType;
 
 import java.util.UUID;
 
@@ -23,6 +25,7 @@ public class BlockEntity {
     private String blockNumber;
 
     @Enumerated(EnumType.STRING)
+    @JdbcType(PostgreSQLEnumJdbcType.class)
     @Column(name = "status", columnDefinition = "block_status")
     private BlockStatus status;
 
