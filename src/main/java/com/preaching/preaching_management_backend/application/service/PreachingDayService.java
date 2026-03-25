@@ -21,11 +21,11 @@ public class PreachingDayService {
     public PreachingDay createPreachingDay(PreachingDay preachingDay) {
 
         if (preachingDay.getDate() == null) {
-            throw new CaptainInvalidDataException("La fecha es obligatoria");
+            throw new PreachingDayInvalidDataException("La fecha es obligatoria");
         }
 
         if (preachingDay.getCaptainId() == null) {
-            throw new PublisherInvalidDataException("El captain id es obligatorio");
+            throw new PreachingDayInvalidDataException("El captain id es obligatorio");
         }
 
         return preachingDayRepository.save(preachingDay);
@@ -38,6 +38,10 @@ public class PreachingDayService {
 
         if (preachingDay.getDate() == null) {
             throw new PreachingDayInvalidDataException("La fecha es obligatoria");
+        }
+
+        if (preachingDay.getCaptainId() == null) {
+            throw new PreachingDayInvalidDataException("El captain id es obligatorio");
         }
 
         PreachingDay updated = PreachingDay.builder()
@@ -60,9 +64,8 @@ public class PreachingDayService {
     }
 
     public void deletePreachingDay(UUID id) {
-        if (!preachingDayRepository.findById(id).isPresent()) {
-            throw new PreachingDayNotFoundException("PreachingDay no encontrado");
-        }
+        preachingDayRepository.findById(id)
+                .orElseThrow(() -> new PreachingDayNotFoundException("PreachingDay no encontrado"));
 
         preachingDayRepository.deleteById(id);
     }
