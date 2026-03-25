@@ -1,5 +1,8 @@
 package com.preaching.preaching_management_backend.shared.exception;
 
+import com.preaching.preaching_management_backend.domain.exception.block.BlockAlreadyExistsException;
+import com.preaching.preaching_management_backend.domain.exception.block.BlockInvalidDataException;
+import com.preaching.preaching_management_backend.domain.exception.block.BlockNotFoundException;
 import com.preaching.preaching_management_backend.domain.exception.captain.CaptainAlreadyExistsException;
 import com.preaching.preaching_management_backend.domain.exception.captain.CaptainInvalidDataException;
 import com.preaching.preaching_management_backend.domain.exception.captain.CaptainNotFoundException;
@@ -17,6 +20,7 @@ import java.util.Map;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
+    // CAPTAIN
     // NOT FOUND
     @ExceptionHandler(CaptainNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
@@ -38,6 +42,7 @@ public class GlobalExceptionHandler {
         return buildResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
+    // PUBLISHERS
     @ExceptionHandler(PublisherNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ErrorResponse handlePublisherNotFound(PublisherNotFoundException ex) {
@@ -53,6 +58,25 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(PublisherAlreadyExistsException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ErrorResponse handlePublisherAlreadyExists(PublisherAlreadyExistsException ex) {
+        return buildResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    // BLOCK
+    @ExceptionHandler(BlockNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ErrorResponse handlePublisherNotFound(BlockNotFoundException ex) {
+        return buildResponse(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(BlockInvalidDataException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorResponse handlePublisherInvalidData(BlockInvalidDataException ex) {
+        return buildResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(BlockAlreadyExistsException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorResponse handlePublisherAlreadyExists(BlockAlreadyExistsException ex) {
         return buildResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
 
