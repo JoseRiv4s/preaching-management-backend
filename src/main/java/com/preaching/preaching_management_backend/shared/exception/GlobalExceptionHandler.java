@@ -6,6 +6,9 @@ import com.preaching.preaching_management_backend.domain.exception.block.BlockNo
 import com.preaching.preaching_management_backend.domain.exception.captain.CaptainAlreadyExistsException;
 import com.preaching.preaching_management_backend.domain.exception.captain.CaptainInvalidDataException;
 import com.preaching.preaching_management_backend.domain.exception.captain.CaptainNotFoundException;
+import com.preaching.preaching_management_backend.domain.exception.preachingParticipants.ParticipantAlreadyExistsException;
+import com.preaching.preaching_management_backend.domain.exception.preachingParticipants.ParticipantInvalidDataException;
+import com.preaching.preaching_management_backend.domain.exception.preachingParticipants.ParticipantNotFoundException;
 import com.preaching.preaching_management_backend.domain.exception.publisher.PublisherAlreadyExistsException;
 import com.preaching.preaching_management_backend.domain.exception.publisher.PublisherInvalidDataException;
 import com.preaching.preaching_management_backend.domain.exception.publisher.PublisherNotFoundException;
@@ -77,6 +80,25 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(BlockAlreadyExistsException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ErrorResponse handlePublisherAlreadyExists(BlockAlreadyExistsException ex) {
+        return buildResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    // PREACHING PARTICIPANT
+    @ExceptionHandler(ParticipantNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ErrorResponse handlePreachingParticipantNotFound(ParticipantNotFoundException ex) {
+        return buildResponse(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(ParticipantInvalidDataException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorResponse handlePreachingParticipantInvalidData(ParticipantInvalidDataException ex) {
+        return buildResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(ParticipantAlreadyExistsException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorResponse handlePreachingParticipantAlreadyExists(ParticipantAlreadyExistsException ex) {
         return buildResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
 

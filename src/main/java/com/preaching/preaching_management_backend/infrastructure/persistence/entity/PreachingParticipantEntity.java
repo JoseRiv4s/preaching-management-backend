@@ -6,7 +6,7 @@ import lombok.*;
 import java.util.UUID;
 
 @Entity
-@Table(name = "captains")
+@Table(name = "preaching_participants")
 @Getter
 @Setter
 @NoArgsConstructor
