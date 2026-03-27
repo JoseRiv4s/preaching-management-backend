@@ -11,4 +11,6 @@ public interface PublisherRepository {
     Optional<Publisher> findById(UUID id);
     List<Publisher> findAll();
     void deleteById(UUID id);
+
+    boolean existsById(UUID id);
 }
