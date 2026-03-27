@@ -11,4 +11,6 @@ public interface PreachingDayRepository {
     Optional<PreachingDay> findById(UUID id);
     List<PreachingDay> findAll();
     void deleteById(UUID id);
+
+    boolean existsById(UUID id);
 }

@@ -45,4 +45,9 @@ public class PublisherRepositoryAdapter implements PublisherRepository {
     public void deleteById(UUID id) {
         jpaRepository.deleteById(id);
     }
+
+    @Override
+    public boolean existsById(UUID id) {
+        return jpaRepository.existsById(id);
+    }
 }

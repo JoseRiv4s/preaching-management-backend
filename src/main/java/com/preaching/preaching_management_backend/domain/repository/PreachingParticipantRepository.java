@@ -8,8 +8,10 @@ import java.util.UUID;
 
 public interface PreachingParticipantRepository {
     PreachingParticipant save (PreachingParticipant preachingParticipant);
-    Optional<PreachingParticipant> findById();
+    Optional<PreachingParticipant> findById(UUID id);
     List<PreachingParticipant> findAll();
     void deleteById(UUID id);
+
+    boolean existsByPreachingDayIdAndPublisherId(UUID preachingDayId, UUID publisherId);
 
 }
