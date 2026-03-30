@@ -11,4 +11,6 @@ public interface BlockRepository {
     Optional<Block> findById(UUID id);
     List<Block> findAll();
     void deleteById(UUID id);
+
+    boolean existsById(UUID id);
 }
