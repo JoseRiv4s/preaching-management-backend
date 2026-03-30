@@ -1,9 +1,9 @@
 package com.preaching.preaching_management_backend.application.service;
 
 import com.preaching.preaching_management_backend.domain.exception.preachedBlock.PreachedBlockAlreadyExistsException;
+import com.preaching.preaching_management_backend.domain.exception.preachedBlock.PreachedBlockInvalidDataException;
 import com.preaching.preaching_management_backend.domain.exception.preachedBlock.PreachedBlockNotFoundException;
-import com.preaching.preaching_management_backend.domain.exception.preachingParticipants.ParticipantInvalidDataException;
-import com.preaching.preaching_management_backend.domain.exception.preachingParticipants.ParticipantNotFoundException;
+import com.preaching.preaching_management_backend.domain.exception.preachedBlock.PreachedBlockRelatedResourceNotFoundException;
 import com.preaching.preaching_management_backend.domain.model.PreachedBlock;
 import com.preaching.preaching_management_backend.domain.repository.BlockRepository;
 import com.preaching.preaching_management_backend.domain.repository.PreachedBlockRepository;
@@ -24,20 +24,15 @@ public class PreachedBlockService {
 
     // CREATE
     public PreachedBlock createPreachedBlock(PreachedBlock preachedBlock) {
-
         validatePreachingDay(preachedBlock.getPreachingDayId());
         validateBlock(preachedBlock.getBlockId());
 
         if (preachedBlockRepository.existsByPreachingDayIdAndBlockId(
-                preachedBlock.getPreachingDayId(),
-                preachedBlock.getBlockId())) {
+                preachedBlock.getPreachingDayId(), preachedBlock.getBlockId())) {
 
             throw new PreachedBlockAlreadyExistsException(
-                    String.format(
-                            "Block %s is already assigned to preaching day %s",
-                            preachedBlock.getBlockId(),
-                            preachedBlock.getPreachingDayId()
-                    )
+                    String.format("Block %s is already assigned to preaching day %s",
+                            preachedBlock.getBlockId(), preachedBlock.getPreachingDayId())
             );
         }
 
@@ -46,7 +41,6 @@ public class PreachedBlockService {
 
     // UPDATE
     public PreachedBlock updatePreachedBlock(UUID id, PreachedBlock preachedBlock) {
-
         PreachedBlock existing = preachedBlockRepository.findById(id)
                 .orElseThrow(() -> new PreachedBlockNotFoundException(
                         String.format("Preached block with ID %s was not found", id)
@@ -55,20 +49,15 @@ public class PreachedBlockService {
         validatePreachingDay(preachedBlock.getPreachingDayId());
         validateBlock(preachedBlock.getBlockId());
 
-        // Validar duplicado solo si cambian los valores
         if (!existing.getPreachingDayId().equals(preachedBlock.getPreachingDayId()) ||
                 !existing.getBlockId().equals(preachedBlock.getBlockId())) {
 
             if (preachedBlockRepository.existsByPreachingDayIdAndBlockId(
-                    preachedBlock.getPreachingDayId(),
-                    preachedBlock.getBlockId())) {
+                    preachedBlock.getPreachingDayId(), preachedBlock.getBlockId())) {
 
                 throw new PreachedBlockAlreadyExistsException(
-                        String.format(
-                                "Block %s is already assigned to preaching day %s",
-                                preachedBlock.getBlockId(),
-                                preachedBlock.getPreachingDayId()
-                        )
+                        String.format("Block %s is already assigned to preaching day %s",
+                                preachedBlock.getBlockId(), preachedBlock.getPreachingDayId())
                 );
             }
         }
@@ -108,11 +97,10 @@ public class PreachedBlockService {
     // VALIDATIONS
     private void validatePreachingDay(UUID preachingDayId) {
         if (preachingDayId == null) {
-            throw new ParticipantInvalidDataException("Preaching day ID cannot be null");
+            throw new PreachedBlockInvalidDataException("Preaching day ID cannot be null");
         }
-
         if (!preachingDayRepository.existsById(preachingDayId)) {
-            throw new ParticipantNotFoundException(
+            throw new PreachedBlockRelatedResourceNotFoundException(
                     String.format("Preaching day with ID %s was not found", preachingDayId)
             );
         }
@@ -120,11 +108,10 @@ public class PreachedBlockService {
 
     private void validateBlock(UUID blockId) {
         if (blockId == null) {
-            throw new ParticipantInvalidDataException("Block ID cannot be null");
+            throw new PreachedBlockInvalidDataException("Block ID cannot be null");
         }
-
         if (!blockRepository.existsById(blockId)) {
-            throw new ParticipantNotFoundException(
+            throw new PreachedBlockRelatedResourceNotFoundException(
                     String.format("Block with ID %s was not found", blockId)
             );
         }

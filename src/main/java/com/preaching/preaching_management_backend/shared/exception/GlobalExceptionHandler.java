@@ -6,6 +6,10 @@ import com.preaching.preaching_management_backend.domain.exception.block.BlockNo
 import com.preaching.preaching_management_backend.domain.exception.captain.CaptainAlreadyExistsException;
 import com.preaching.preaching_management_backend.domain.exception.captain.CaptainInvalidDataException;
 import com.preaching.preaching_management_backend.domain.exception.captain.CaptainNotFoundException;
+import com.preaching.preaching_management_backend.domain.exception.preachedBlock.PreachedBlockAlreadyExistsException;
+import com.preaching.preaching_management_backend.domain.exception.preachedBlock.PreachedBlockInvalidDataException;
+import com.preaching.preaching_management_backend.domain.exception.preachedBlock.PreachedBlockNotFoundException;
+import com.preaching.preaching_management_backend.domain.exception.preachedBlock.PreachedBlockRelatedResourceNotFoundException;
 import com.preaching.preaching_management_backend.domain.exception.preachingParticipants.ParticipantAlreadyExistsException;
 import com.preaching.preaching_management_backend.domain.exception.preachingParticipants.ParticipantInvalidDataException;
 import com.preaching.preaching_management_backend.domain.exception.preachingParticipants.ParticipantNotFoundException;
@@ -100,6 +104,31 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ErrorResponse handlePreachingParticipantAlreadyExists(ParticipantAlreadyExistsException ex) {
         return buildResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    // PREACHED BLOCK
+    @ExceptionHandler(PreachedBlockNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ErrorResponse handlePreachedBlockNotFound(PreachedBlockNotFoundException ex) {
+        return buildResponse(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(PreachedBlockInvalidDataException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorResponse handlePreachedBlockInvalidData(PreachedBlockInvalidDataException ex) {
+        return buildResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(PreachedBlockAlreadyExistsException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorResponse handlePreachedBlockAlreadyExists(PreachedBlockAlreadyExistsException ex) {
+        return buildResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(PreachedBlockRelatedResourceNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ErrorResponse handlePreachedBlockRelatedResourceNotFound(PreachedBlockRelatedResourceNotFoundException ex) {
+        return buildResponse(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 
     // VALIDACIONES (@Valid)
