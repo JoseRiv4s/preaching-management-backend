@@ -24,5 +24,5 @@ public class PreachedBlockEntity {
 
     @ManyToOne
     @JoinColumn(name = "block_id", nullable = false)
-    private BlockEntity blockId;
+    private BlockEntity block;
 }

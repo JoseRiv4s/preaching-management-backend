@@ -20,7 +20,7 @@ public class PreachedBlockMapper {
         return PreachedBlockEntity.builder()
                 .id(preachedBlock.getId())
                 .preachingDay(preachingDay)
-                .blockId(block)
+                .block(block)
                 .build();
     }
 
@@ -28,7 +28,7 @@ public class PreachedBlockMapper {
         return PreachedBlock.builder()
                 .id(entity.getId())
                 .preachingDayId(entity.getPreachingDay().getId())
-                .blockId(entity.getBlockId().getId())
+                .blockId(entity.getBlock().getId())
                 .build();
     }
 }

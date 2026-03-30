@@ -72,12 +72,12 @@ public class PreachedBlockService {
     }
 
     // GET ALL
-    public List<PreachedBlock> getPreachedBlock() {
+    public List<PreachedBlock> getAllPreachedBlock() {
         return preachedBlockRepository.findAll();
     }
 
     // GET BY ID
-    public PreachedBlock getPreachedBlock(UUID id) {
+    public PreachedBlock getPreachedBlockById(UUID id) {
         return preachedBlockRepository.findById(id)
                 .orElseThrow(() -> new PreachedBlockNotFoundException(
                         String.format("Preached block with ID %s was not found", id)
