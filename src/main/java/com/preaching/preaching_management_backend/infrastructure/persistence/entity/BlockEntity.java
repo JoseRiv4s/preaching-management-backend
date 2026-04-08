@@ -31,4 +31,8 @@ public class BlockEntity {
 
     @Column(name = "notes")
     private String notes;
+
+    @ManyToOne
+    @JoinColumn(name = "territory_id", nullable = false)
+    private TerritoriesEntity territories;
 }

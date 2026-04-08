@@ -16,4 +16,5 @@ public class Block {
     private String blockNumber;
     private BlockStatus status;
     private String notes;
+    private UUID territoryId;
 }

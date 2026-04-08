@@ -19,6 +19,7 @@ import com.preaching.preaching_management_backend.domain.exception.publisher.Pub
 import com.preaching.preaching_management_backend.domain.exception.territories.TerritoriesAlreadyExistsException;
 import com.preaching.preaching_management_backend.domain.exception.territories.TerritoriesInvalidDataException;
 import com.preaching.preaching_management_backend.domain.exception.territories.TerritoriesNotFoundException;
+import com.preaching.preaching_management_backend.domain.exception.territories.TerritoriesRelatedResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
@@ -151,6 +152,12 @@ public class GlobalExceptionHandler {
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ErrorResponse handleTerritoriesAlreadyExists(TerritoriesAlreadyExistsException ex) {
         return buildResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(TerritoriesRelatedResourceNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ErrorResponse handleTerritoriesRelatedResourceNotFound(TerritoriesRelatedResourceNotFoundException ex) {
+        return buildResponse(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 
     // VALIDACIONES (@Valid)
