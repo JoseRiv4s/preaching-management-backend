@@ -11,10 +11,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Block {
+public class Territories {
     private UUID id;
-    private String blockNumber;
-    private BlockStatus status;
-    private String notes;
-    private UUID territoryId;
+    private String name;
 }

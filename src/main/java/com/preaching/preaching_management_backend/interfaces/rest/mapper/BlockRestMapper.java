@@ -16,6 +16,7 @@ public class BlockRestMapper {
                 .blockNumber(request.getBlockNumber())
                 .status(request.getStatus())
                 .notes(request.getNotes())
+                .territoryId(request.getTerritoryId())
                 .build();
     }
 
@@ -25,6 +26,7 @@ public class BlockRestMapper {
                 .blockNumber(request.getBlockNumber())
                 .status(request.getStatus())
                 .notes(request.getNotes())
+                .territoryId(request.getTerritoryId())
                 .build();
     }
 
@@ -34,6 +36,7 @@ public class BlockRestMapper {
                 .blockNumber(block.getBlockNumber())
                 .status(block.getStatus())
                 .notes(block.getNotes())
+                .territoryId(block.getTerritoryId())
                 .build();
     }
 }

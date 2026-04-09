@@ -5,6 +5,8 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import lombok.Data;
 
+import java.util.UUID;
+
 @Data
 public class CreateBlockRequest {
 
@@ -12,4 +14,5 @@ public class CreateBlockRequest {
     private String blockNumber;
     private BlockStatus status;
     private String notes;
+    private UUID territoryId;
 }

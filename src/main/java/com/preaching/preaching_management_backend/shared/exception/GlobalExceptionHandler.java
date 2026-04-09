@@ -16,6 +16,10 @@ import com.preaching.preaching_management_backend.domain.exception.preachingPart
 import com.preaching.preaching_management_backend.domain.exception.publisher.PublisherAlreadyExistsException;
 import com.preaching.preaching_management_backend.domain.exception.publisher.PublisherInvalidDataException;
 import com.preaching.preaching_management_backend.domain.exception.publisher.PublisherNotFoundException;
+import com.preaching.preaching_management_backend.domain.exception.territories.TerritoriesAlreadyExistsException;
+import com.preaching.preaching_management_backend.domain.exception.territories.TerritoriesInvalidDataException;
+import com.preaching.preaching_management_backend.domain.exception.territories.TerritoriesNotFoundException;
+import com.preaching.preaching_management_backend.domain.exception.territories.TerritoriesRelatedResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
@@ -128,6 +132,31 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(PreachedBlockRelatedResourceNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
     public ErrorResponse handlePreachedBlockRelatedResourceNotFound(PreachedBlockRelatedResourceNotFoundException ex) {
+        return buildResponse(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    // TERRITORIES
+    @ExceptionHandler(TerritoriesNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ErrorResponse handleTerritoriesNotFound(TerritoriesNotFoundException ex) {
+        return buildResponse(ex.getMessage(), HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(TerritoriesInvalidDataException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorResponse handleTerritoriesInvalidData(TerritoriesInvalidDataException ex) {
+        return buildResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(TerritoriesAlreadyExistsException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorResponse handleTerritoriesAlreadyExists(TerritoriesAlreadyExistsException ex) {
+        return buildResponse(ex.getMessage(), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(TerritoriesRelatedResourceNotFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    public ErrorResponse handleTerritoriesRelatedResourceNotFound(TerritoriesRelatedResourceNotFoundException ex) {
         return buildResponse(ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 
