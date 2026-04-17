@@ -34,6 +34,7 @@ public class CaptainRestMapper {
                 .name(captain.getName())
                 .phone(captain.getPhone())
                 .email(captain.getEmail())
+                .createdAt(captain.getCreatedAt())
                 .build();
     }
 }

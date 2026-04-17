@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @Getter
@@ -15,4 +16,5 @@ public class Publisher {
     private UUID id;
     private String name;
     private String phone;
+    private OffsetDateTime createdAt;
 }

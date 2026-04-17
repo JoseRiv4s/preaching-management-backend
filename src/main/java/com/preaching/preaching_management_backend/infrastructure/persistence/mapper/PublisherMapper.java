@@ -20,6 +20,7 @@ public class PublisherMapper {
                 .id(entity.getId())
                 .name(entity.getName())
                 .phone(entity.getPhone())
+                .createdAt(entity.getCreatedAt())
                 .build();
     }
 }

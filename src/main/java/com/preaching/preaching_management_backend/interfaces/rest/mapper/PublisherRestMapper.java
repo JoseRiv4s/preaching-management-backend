@@ -31,6 +31,7 @@ public class PublisherRestMapper {
                 .id(publisher.getId())
                 .name(publisher.getName())
                 .phone(publisher.getPhone())
+                .createdAt(publisher.getCreatedAt())
                 .build();
     }
 }

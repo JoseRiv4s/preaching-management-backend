@@ -12,7 +12,6 @@ public class CreateBlockRequest {
 
     @NotBlank(message = "El número del bloque es obligatorio")
     private String blockNumber;
-    private BlockStatus status;
     private String notes;
     private UUID territoryId;
 }

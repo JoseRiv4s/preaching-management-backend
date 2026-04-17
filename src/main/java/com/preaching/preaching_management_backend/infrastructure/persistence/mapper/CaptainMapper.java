@@ -13,6 +13,7 @@ public class CaptainMapper {
                 .name(captain.getName())
                 .phone(captain.getPhone())
                 .email(captain.getEmail())
+                .createdAt(captain.getCreatedAt())
                 .build();
     }
 
@@ -22,6 +23,7 @@ public class CaptainMapper {
                 .name(entity.getName())
                 .phone(entity.getPhone())
                 .email(entity.getEmail())
+                .createdAt(entity.getCreatedAt())
                 .build();
     }
 }
