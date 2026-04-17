@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @Getter
@@ -16,6 +17,7 @@ public class Captain {
     private String name;
     private String phone;
     private String email;
+    private OffsetDateTime createdAt;
 }
 
 

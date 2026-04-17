@@ -3,6 +3,7 @@ package com.preaching.preaching_management_backend.interfaces.rest.dto.territori
 import lombok.Builder;
 import lombok.Data;
 
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @Data
@@ -10,4 +11,5 @@ import java.util.UUID;
 public class TerritoriesResponse {
     private UUID id;
     private String name;
+    private OffsetDateTime createdAt;
 }

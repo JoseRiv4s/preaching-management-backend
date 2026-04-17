@@ -22,6 +22,7 @@ public class TerritoriesMapper {
         return Territories.builder()
                 .id(entity.getId())
                 .name(entity.getName())
+                .createdAt(entity.getCreatedAt())
                 .build();
     }
 }

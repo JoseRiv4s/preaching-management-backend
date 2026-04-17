@@ -15,4 +15,5 @@ public class PreachedBlock {
     private UUID id;
     private UUID preachingDayId;
     private UUID blockId;
+
 }

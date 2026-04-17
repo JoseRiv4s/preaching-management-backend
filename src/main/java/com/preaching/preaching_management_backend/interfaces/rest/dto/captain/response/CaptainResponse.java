@@ -3,6 +3,7 @@ package com.preaching.preaching_management_backend.interfaces.rest.dto.captain.r
 import lombok.Builder;
 import lombok.Data;
 
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @Data
@@ -12,4 +13,5 @@ public class CaptainResponse {
     private String name;
     private String phone;
     private String email;
+    private OffsetDateTime createdAt;
 }

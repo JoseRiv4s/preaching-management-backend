@@ -28,6 +28,7 @@ public class TerritoriesRestMapper {
         return TerritoriesResponse.builder()
                 .id(territories.getId())
                 .name(territories.getName())
+                .createdAt(territories.getCreatedAt())
                 .build();
     }
 }

@@ -3,6 +3,7 @@ package com.preaching.preaching_management_backend.infrastructure.persistence.en
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 @Entity
@@ -26,4 +27,7 @@ public class CaptainEntity {
 
     @Column(unique = true, length = 255)
     private String email;
+
+    @Column(name = "created_at", nullable = false, updatable = false, insertable = false)
+    private OffsetDateTime createdAt;
 }
